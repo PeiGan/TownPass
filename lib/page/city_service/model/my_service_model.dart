@@ -28,12 +28,20 @@ enum MyServiceItemId {
   library,
   locationSearch,
   zoo,
+  leftFoodSearch,
   ;
 }
 
 extension MyServiceIdExt on MyServiceItemId {
   MyServiceItem get item {
     return switch (this) {
+      MyServiceItemId.leftFoodSearch => MyServiceItem(
+          title: '惜食地圖',
+          description: '提供上傳、搜尋剩餘食物',
+          icon: Assets.svg.bento1Circle.svg(), //TODO
+          category: MyServiceCategory.cityLife,
+          destinationUrl: 'http://localhost:5173/ourmap/'
+        ),
       MyServiceItemId.dedicatedLine => MyServiceItem(
           title: '1999',
           description: '播打網路語音通話',
@@ -46,7 +54,7 @@ extension MyServiceIdExt on MyServiceItemId {
           description: '線上申辦市政府服務個項目（市民）',
           icon: Assets.svg.iconDistrictOffice.svg(),
           category: MyServiceCategory.cityService,
-          destinationUrl: 'https://taipei-pass-service.vercel.app/',
+          destinationUrl: 'http://localhost:5173',
         ),
       MyServiceItemId.reportIssue => MyServiceItem(
           title: '有話要說',
